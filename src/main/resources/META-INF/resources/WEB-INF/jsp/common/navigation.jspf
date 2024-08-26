@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="common/css/navigation.css">
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="menu">Home</a></li>
+        <li><a href="createFeedback">Create Feedback</a></li>
+        <li><a href="feedbackSummaries">Feedback Summaries</a></li>
+    </ul>
+</nav>
+</body>
+</html>
