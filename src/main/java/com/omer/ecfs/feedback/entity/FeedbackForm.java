@@ -1,4 +1,4 @@
-package com.omer.ecfs.feedback;
+package com.omer.ecfs.feedback.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

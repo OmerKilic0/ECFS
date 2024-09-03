@@ -1,4 +1,4 @@
-package com.omer.ecfs.feedback;
+package com.omer.ecfs.feedback.controller;
 
 import java.util.List;
 
@@ -8,15 +8,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.omer.ecfs.feedback.entity.Feedback;
+import com.omer.ecfs.feedback.entity.FeedbackForm;
+import com.omer.ecfs.feedback.service.EmailService;
+import com.omer.ecfs.feedback.service.FeedbackFormService;
+import com.omer.ecfs.feedback.service.FeedbackService;
+
 @Controller
 public class FeedbackController {
 
 	private FeedbackFormService feedbackFormService;
 	private FeedbackService feedbackService;
+	private EmailService emailService;
 	
-	public FeedbackController(FeedbackFormService feedbackFormService, FeedbackService feedbackService) {
+	public FeedbackController(FeedbackFormService feedbackFormService, FeedbackService feedbackService, EmailService emailService) {
 		this.feedbackFormService = feedbackFormService;
 		this.feedbackService = feedbackService;
+		this.emailService = emailService;
 	}
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
@@ -40,6 +48,12 @@ public class FeedbackController {
 		FeedbackForm feedbackForm = new FeedbackForm(course, date, topic);
 		feedbackFormService.saveFeedback(feedbackForm);
 		model.addAttribute("feedbackForm", feedbackForm);
+		
+		String subject = "New Feedback for " + course;
+		String text = "A new feedback form has been created for the course: " + course + 
+				". Please provide your feedback at the following link: " + 
+                "http://localhost:8080/writeFeedback?feedbackId=" + feedbackForm.getId();
+		emailService.sendFeedbackNotification("omerfarukkilic.17@gmail.com", subject, text);
         
 		return "redirect:/menu";
 	}

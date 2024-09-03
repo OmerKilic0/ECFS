@@ -1,4 +1,4 @@
-package com.omer.ecfs.feedback;
+package com.omer.ecfs.feedback.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,9 @@ import java.util.function.Predicate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.omer.ecfs.feedback.entity.FeedbackForm;
+import com.omer.ecfs.feedback.repository.FeedbackFormRepository;
 
 
 @Service

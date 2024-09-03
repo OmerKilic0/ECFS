@@ -1,10 +1,13 @@
-package com.omer.ecfs.feedback;
+package com.omer.ecfs.feedback.service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
 import org.springframework.stereotype.Service;
+
+import com.omer.ecfs.feedback.entity.Feedback;
+import com.omer.ecfs.feedback.repository.FeedbackRepository;
 
 @Service
 public class FeedbackService {
